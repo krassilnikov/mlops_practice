@@ -1,10 +1,48 @@
 pipeline {
     agent any
+    
     stages {
-     stage('Hello') {
-                steps {
-                    echo 'Hello world'
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/krassilnikov/mlops_practice.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                dir('lab1') {
+                    sh 'python3 -m venv .venv'
+                    sh '. .venv/bin/activate'
+                    sh 'pip install -r requirements.txt --break-system-packages'
                 }
             }
-     }
+        }
+        stage('data_creation') {
+            steps {
+                dir('lab1') {
+                    sh 'python3 data_creation.py'
+                }
+            }
+        }
+        stage('model_preprocessing') {
+            steps {
+                dir('lab1') {
+                    sh 'python3 model_preprocessing.py'
+                }
+            }
+        }
+        stage('model_preparation') {
+            steps {
+                dir('lab1') {
+                    sh 'python3 model_preparation.py'
+                }
+            }
+        }
+        stage('Model Testing') {
+            steps {
+                dir('lab1') {
+                    sh 'python3 model_testing.py'
+                }
+            }
+        }
+    }
 }
