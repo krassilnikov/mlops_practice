@@ -1,0 +1,105 @@
+Started by user Mike
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\ProgramData\Jenkins\.jenkins\workspace\test
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Clone Repository)
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\test\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/krassilnikov/mlops_practice.git # timeout=10
+Fetching upstream changes from https://github.com/krassilnikov/mlops_practice.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.43.0.windows.1'
+ > git.exe fetch --tags --force --progress -- https://github.com/krassilnikov/mlops_practice.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision 746bb8deecc6fbd309b1b09dbf00c1a9b4918cf9 (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 746bb8deecc6fbd309b1b09dbf00c1a9b4918cf9 # timeout=10
+ > git.exe branch -a -v --no-abbrev # timeout=10
+ > git.exe branch -D master # timeout=10
+ > git.exe checkout -b master 746bb8deecc6fbd309b1b09dbf00c1a9b4918cf9 # timeout=10
+Commit message: "Update jenkins_pipeline"
+ > git.exe rev-list --no-walk 746bb8deecc6fbd309b1b09dbf00c1a9b4918cf9 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (requirements)
+[Pipeline] dir
+Running in C:\ProgramData\Jenkins\.jenkins\workspace\test\lab1
+[Pipeline] {
+[Pipeline] pwsh
+Requirement already satisfied: numpy in c:\users\ultra\appdata\local\programs\python\python39\lib\site-packages (from -r requirements.txt (line 1)) (1.26.3)
+Requirement already satisfied: pandas in c:\users\ultra\appdata\local\programs\python\python39\lib\site-packages (from -r requirements.txt (line 2)) (2.2.2)
+Requirement already satisfied: sklearn in c:\users\ultra\appdata\local\programs\python\python39\lib\site-packages (from -r requirements.txt (line 3)) (0.0)
+Requirement already satisfied: joblib in c:\users\ultra\appdata\local\programs\python\python39\lib\site-packages (from -r requirements.txt (line 4)) (1.4.2)
+Requirement already satisfied: python-dateutil>=2.8.2 in c:\users\ultra\appdata\local\programs\python\python39\lib\site-packages (from pandas->-r requirements.txt (line 2)) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in c:\users\ultra\appdata\local\programs\python\python39\lib\site-packages (from pandas->-r requirements.txt (line 2)) (2024.1)
+Requirement already satisfied: tzdata>=2022.7 in c:\users\ultra\appdata\local\programs\python\python39\lib\site-packages (from pandas->-r requirements.txt (line 2)) (2024.1)
+Requirement already satisfied: scikit-learn in c:\users\ultra\appdata\local\programs\python\python39\lib\site-packages (from sklearn->-r requirements.txt (line 3)) (1.5.0)
+Requirement already satisfied: six>=1.5 in c:\users\ultra\appdata\local\programs\python\python39\lib\site-packages (from python-dateutil>=2.8.2->pandas->-r requirements.txt (line 2)) (1.16.0)
+Requirement already satisfied: threadpoolctl>=3.1.0 in c:\users\ultra\appdata\local\programs\python\python39\lib\site-packages (from scikit-learn->sklearn->-r requirements.txt (line 3)) (3.5.0)
+Requirement already satisfied: scipy>=1.6.0 in c:\users\ultra\appdata\local\programs\python\python39\lib\site-packages (from scikit-learn->sklearn->-r requirements.txt (line 3)) (1.13.1)
+WARNING: You are using pip version 21.2.4; however, version 24.0 is available.
+You should consider upgrading via the 'C:\Users\ultra\AppData\Local\Programs\Python\Python39\python.exe -m pip install --upgrade pip' command.
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (data_creation)
+[Pipeline] dir
+Running in C:\ProgramData\Jenkins\.jenkins\workspace\test\lab1
+[Pipeline] {
+[Pipeline] pwsh
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (model_preprocessing)
+[Pipeline] dir
+Running in C:\ProgramData\Jenkins\.jenkins\workspace\test\lab1
+[Pipeline] {
+[Pipeline] pwsh
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (model_preparation)
+[Pipeline] dir
+Running in C:\ProgramData\Jenkins\.jenkins\workspace\test\lab1
+[Pipeline] {
+[Pipeline] pwsh
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Model Testing)
+[Pipeline] dir
+Running in C:\ProgramData\Jenkins\.jenkins\workspace\test\lab1
+[Pipeline] {
+[Pipeline] pwsh
+C:\Users\ultra\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\metrics\_regression.py:492: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+C:\Users\ultra\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\metrics\_regression.py:492: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+C:\Users\ultra\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\metrics\_regression.py:492: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+RMSE for scaled_data_1.csv : 0.99945043907696
+RMSE for scaled_data_2.csv : 0.9892863994622185
+RMSE for scaled_data_3.csv : 1.0050339980054481
+Average RMSE: 0.9979236121815421
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
