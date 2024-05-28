@@ -1,13 +1,11 @@
 pipeline {
     agent any
-    
     stages {
         stage('Clone Repository') {
             steps {
                 git 'https://github.com/krassilnikov/mlops_practice.git'
             }
         }
-<<<<<<< HEAD
         stage('requirements') {
             steps {
                 dir('lab1') {
@@ -27,50 +25,20 @@ pipeline {
             steps {
                 dir('lab1') {
                     pwsh "C:\\Users\\ultra\\AppData\\Local\\Programs\\Python\\Python39\\Python.exe model_preprocessing.py"
-=======
-        stage('Install Dependencies') {
-            steps {
-                dir('lab1') {
-                    sh 'python3 -m venv .venv'
-                    sh '. .venv/bin/activate'
-                    sh 'pip install -r requirements.txt --break-system-packages'
-                }
-            }
-        }
-        stage('data_creation') {
-            steps {
-                dir('lab1') {
-                    sh 'python3 data_creation.py'
-                }
-            }
-        }
-        stage('model_preprocessing') {
-            steps {
-                dir('lab1') {
-                    sh 'python3 model_preprocessing.py'
->>>>>>> 746bb8deecc6fbd309b1b09dbf00c1a9b4918cf9
                 }
             }
         }
         stage('model_preparation') {
             steps {
                 dir('lab1') {
-<<<<<<< HEAD
                     pwsh "C:\\Users\\ultra\\AppData\\Local\\Programs\\Python\\Python39\\Python.exe model_preparation.py"
-=======
-                    sh 'python3 model_preparation.py'
->>>>>>> 746bb8deecc6fbd309b1b09dbf00c1a9b4918cf9
                 }
             }
         }
         stage('Model Testing') {
             steps {
                 dir('lab1') {
-<<<<<<< HEAD
                     pwsh "C:\\Users\\ultra\\AppData\\Local\\Programs\\Python\\Python39\\Python.exe model_testing.py"
-=======
-                    sh 'python3 model_testing.py'
->>>>>>> 746bb8deecc6fbd309b1b09dbf00c1a9b4918cf9
                 }
             }
         }
